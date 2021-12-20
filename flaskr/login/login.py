@@ -12,6 +12,7 @@ login_blueprint = Blueprint('login', __name__)
 def index():
     return render_template('login.html')
 
+#NEW AGE
 
 @login_blueprint.route("/")
 @login_blueprint.route("/login", methods=['GET','POST'])
