@@ -1,7 +1,9 @@
-from flaskr import app
-from flaskr.models import db
+from flaskr import create_app
 
+app = create_app()
 
 if __name__=='__main__':
-    db.create_all()
+    
     app.run(debug=True)
+    
+    

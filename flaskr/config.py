@@ -1,9 +1,5 @@
 
 
-
-
-
-
 class Config(object):
     RECAPTCHA_USE_SSL = False
     RECAPTCHA_PUBLIC_KEY = '6LcBfrUdAAAAANBJCjhns5jsss2x-G9AdK83e29H'
@@ -16,11 +12,11 @@ class Config(object):
     # SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://armandosuazo:a1234567@armandosuazo.mysql.pythonanywhere-services.com/medical_db"
     # SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://armandosuazo:a1234567@armandosuazo.mysql.pythonanywhere-services.com/inspection_db"
     SQLALCHEMY_DATABASE_URI = 'mysql://root:''@127.0.0.1/technical_supportdb'
-    SQLALCHEMY_POOL_SIZE = 30
-    SQLALCHEMY_MAX_OVERFLOW = 20
-    SQLALCHEMY_POOL_TIMEOUT = 300
+    # SQLALCHEMY_POOL_SIZE = 30
+    # SQLALCHEMY_MAX_OVERFLOW = 20
+    # SQLALCHEMY_POOL_TIMEOUT = 300
 
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    # SQLALCHEMY_TRACK_MODIFICATIONS = False
     DEBUG = True  
  
     #********MY PATHS ROUTES ------------****************************

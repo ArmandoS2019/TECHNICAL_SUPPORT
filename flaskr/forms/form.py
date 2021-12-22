@@ -6,7 +6,7 @@ from wtforms.validators import DataRequired, Length
 from wtforms import StringField, PasswordField, SelectField
 from wtforms.validators import InputRequired, Length, EqualTo
 from wtforms.validators import ValidationError
-from flask_wtf.file import FileRequired, FileField, FileAllowed
+from flask_wtf.file import FileRequired, FileField, FileAllowed 
 
 
 def check_length_ced(form, field):
@@ -21,37 +21,31 @@ class Login_form(FlaskForm):
     recaptcha = RecaptchaField('',validators=[InputRequired('Campo requerido')])
    
 class Personal_info_form(FlaskForm):
-    firstname = StringField('', validators=[InputRequired('Nombre requerido')])
-    lastname = StringField('', validators=[InputRequired('Apellido requerido')])
+    cedula_id = StringField('Nombres', validators=[InputRequired('Cedula')])
+    num_carnet_id_pass = StringField('Nombres', validators=[InputRequired('Numero carnet')])
+    
+    firstname = StringField('Nombres', validators=[InputRequired('Nombre requerido')])
+    lastname = StringField('Apellidos', validators=[InputRequired('Apellido requerido')])
     email = StringField('Email', validators=[DataRequired()])
-    celphone2 = StringField('Celular', validators=[DataRequired()])
     celphone1 = StringField('Telefono')
-    direccion_workplace_police = StringField('Direccion,P.N., a la que pertenece', 
-                                             validators=[DataRequired()])
+    celphone2 = StringField('Celular', validators=[DataRequired()])
 
     rank_list = [("",""),('Coronel','Coronel'),('Teniente Coronel','Teniente Coronel'),
                      ('Mayor','Mayor'),('Capitan','Capitan'),('Primer Teniente','Primer Teniente'),
                      ('Segundo Teniente','Segundo Teniente'),('Sargento Mayor','Sargento Mayor'),('Sargento','Sargento'),('Cabo','Cabo'),
                      ('Raso','Raso'),('Asimilado','Asimilado'),('Igualado','Igualado')]
-    rank = SelectField('Rango',choices=rank_list, validators=[InputRequired('Rango requerido')])
+    rank = SelectField('Su Rango',choices=rank_list, validators=[InputRequired('Rango requerido')])
 
 
     department_list = [("",""),('Direccion Regional Central del Distrito',
                                 'Direccion Regional Central del Distrito'),
                                ('Direccion Regional Este','Direccion Regional Este')]
-    department = SelectField(u'Direccion, P.N.',choices=department_list, validators=[InputRequired('Direcion requerida')])
+    direccion_workplace_police = SelectField(u'Direccion, P.N., a la que perteneces',choices=department_list, validators=[InputRequired('Direcion requerida')])
 
-    work_unit = StringField('Unidad,P.N., a la que pertenece', 
+    work_unit = StringField('Unidad, P.N., a la que pertenece', 
                                              validators=[DataRequired()])
 
-    rank_list = [("",""),('Coronel','Coronel'),('Teniente Coronel','Teniente Coronel'),
-                     ('Mayor','Mayor'),('Capitan','Capitan'),('Primer Teniente','Primer Teniente'),
-                     ('Segundo Teniente','Segundo Teniente'),('Sargento Mayor','Sargento Mayor'),('Sargento','Sargento'),('Cabo','Cabo'),
-                     ('Raso','Raso'),('Asimilado','Asimilado'),('Igualado','Igualado')]
-    rank = SelectField('Rango',choices=rank_list, validators=[InputRequired('Rango requerido')])
-
-
-
+   
 class Documents_info_form(FlaskForm):
     
     provincia_location = StringField('', validators=[InputRequired('Nombre requerido')])

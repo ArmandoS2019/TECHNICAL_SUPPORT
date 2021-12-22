@@ -2,8 +2,6 @@ from flask import (Blueprint,
                    render_template,request)
 
 from flaskr.forms.form import Personal_info_form
-# import socket    
-# import getpass
 
 main_blueprint = Blueprint('main', __name__)
 
@@ -25,4 +23,4 @@ def main():
             
         #     return redirect(url_for('main'))
     else:
-        return render_template('my_index.html') 
+        return render_template('main.html') 
