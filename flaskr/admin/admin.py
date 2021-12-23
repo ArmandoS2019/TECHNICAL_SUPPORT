@@ -32,9 +32,9 @@ admin_blueprint = Blueprint('admin', __name__)
 @admin_blueprint.route("/admin", methods=['GET','POST'])
 def admin():
     form_personal = Personal_info_form()
-    
+
     if form_personal.validate_on_submit(): 
-        flash(Markup(f'Paciente XXX ya se encuentra registrado.  <a type="button" class="close" data-dismiss="alert" aria-label="close">&times;</a>'), "success")
-        return redirect(url_for('admin'))
+       flash(Markup(f'Paciente XXX ya se encuentra registrado.  <a type="button" class="close" data-dismiss="alert" aria-label="close">&times;</a>'), "success")
+       return redirect(url_for('login.login'))
     
     return render_template('admin.html',form_personal=form_personal)
