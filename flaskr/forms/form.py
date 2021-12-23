@@ -1,7 +1,6 @@
-
 from flask_wtf import FlaskForm
 from flask_wtf import RecaptchaField
-from wtforms import StringField, PasswordField
+from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired, Length
 from wtforms import StringField, PasswordField, SelectField
 from wtforms.validators import InputRequired, Length, EqualTo
@@ -44,6 +43,7 @@ class Personal_info_form(FlaskForm):
 
     work_unit = StringField('Unidad, P.N., a la que pertenece', 
                                              validators=[DataRequired()])
+    submit = SubmitField('Enviar')
 
    
 class Documents_info_form(FlaskForm):

@@ -5,46 +5,47 @@
 {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
         {% for category, message in messages %}
-            <div class="alert alert-{{ category }} alert-dismissible" >
+            <div class="alert alert-{{ category }} alert-dismissible">
             <strong>{{ message }}</strong>
             </div>
         {% endfor %}
     {% endif %}
 {% endwith %}
 
-<form class="row g-3" action="{{ url_for('admin.admin') }}" method="POST" enctype="multipart/form-data" autocomplete="off">
+<form class="row g-3" action="{{ url_for('admin.admin') }}" method="POST" enctype="multipart/form-data">
+    {{ form_personal.csrf_token }}
     <div class="col-md-6">
-      {{ render_field(form.cedula_id, placeholder='Cedula',class="form-control",id="inputEmail4") }}
+      {{ render_field(form_personal.cedula_id, placeholder='Cedula',class="form-control",id="inputEmail4") }}
     </div>
     <div class="col-md-6">
-      {{ render_field(form.num_carnet_id_pass, placeholder='Numero carnet',class="form-control",id="inputEmail4") }}
+      {{ render_field(form_personal.num_carnet_id_pass, placeholder='Numero carnet',class="form-control",id="inputEmail4") }}
     </div>
     <div class="col-md-6">
-      {{ render_field(form.firstname, placeholder='Nombres',class="form-control",id="inputEmail4") }}
+      {{ render_field(form_personal.firstname, placeholder='Nombres',class="form-control",id="inputEmail4") }}
     </div>
     <div class="col-md-6">
-        {{ render_field(form.lastname, placeholder='Apellidos',class="form-control",id="inputEmail4") }}
+        {{ render_field(form_personal.lastname, placeholder='Apellidos',class="form-control",id="inputEmail4") }}
     </div>
     <div class="col-md-6">
-        {{ render_field(form.email, placeholder='Email',class="form-control",id="inputEmail4") }}
+        {{ render_field(form_personal.email, placeholder='Email',class="form-control",id="inputEmail4") }}
     </div>
     <div class="col-md-6">
-        {{ render_field(form.celphone1, placeholder='Telefono',class="form-control",id="inputEmail4") }}
+        {{ render_field(form_personal.celphone1, placeholder='Telefono',class="form-control",id="inputEmail4") }}
     </div>
     <div class="col-md-6">
-        {{ render_field(form.celphone2, placeholder='Celular',class="form-control",id="inputEmail4") }}
+        {{ render_field(form_personal.celphone2, placeholder='Celular',class="form-control",id="inputEmail4") }}
     </div>
     <div class="col-md-6">
-        {{ render_field(form.direccion_workplace_police, placeholder='Direccion, P.N., a la que perteneces',class="form-control",id="inputEmail4") }}
+        {{ render_field(form_personal.direccion_workplace_police, placeholder='Direccion, P.N., a la que perteneces',class="form-control",id="inputEmail4") }}
     </div>
     <div class="col-md-6">
         {{ render_field(form.work_unit, placeholder='Unidad policial a la que perteneces',class="form-control",id="inputEmail4") }}
     </div>
     <div class="col-md-6">
-        {{ render_field(form.rank, placeholder='Su rango',class="form-control",id="inputEmail4") }}
+        {{ render_field(form_personal.rank, placeholder='Su rango',class="form-control",id="inputEmail4") }}
     </div>
     <div class="col-12">
-      <button type="submit" class="btn btn-primary">Enviar</button>
+        {{ render_field(form_personal.submit,class="btn btn-primary") }}
     </div>
   </form>
 

@@ -1,9 +1,8 @@
 from flask_login import LoginManager, UserMixin
 from datetime import datetime
 from flask_sqlalchemy import SQLAlchemy
-
-
-db = SQLAlchemy()
+from flaskr import db
+# db = SQLAlchemy()
 
 class User_tbl(UserMixin, db.Model):
     __tablename__ = 'User_tbl'
