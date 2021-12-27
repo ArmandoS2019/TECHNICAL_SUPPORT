@@ -32,35 +32,36 @@
           <div class="col-md-6 mx-auto">
             <div class="card">
               <div class="card-body p-5">
+
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                  {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible" >
+                      <strong>{{ message }}</strong>
+                    </div>
+                  {% endfor %}
+                {% endif %}
+              {% endwith %}
+              
                 <header class="text-center mb-4">
                   <h1 class="text-xxl text-gray-400 text-uppercase">INSPECTORIA<strong class="text-primary">GENERAL P.N.</strong></h1>
                   <p class="text-gray-500 fw-light">FORMULARIO PARA LOS MIEMBROS DE LA POLICIA NACIONAL QUE POSEAN VIVIENDAS QUE POR SU ESTADO DE
                     DETERIORO AMERITEN SER REPARADAS O RECONSTRUIDAS.</p>
                 </header>
-
-                {% with messages = get_flashed_messages(with_categories=true) %}
-                  {% if messages %}
-                    {% for category, message in messages %}
-                      <div class="alert alert-{{ category }} alert-dismissible" >
-                        <strong>{{ message }}</strong>
-                      </div>
-                    {% endfor %}
-                  {% endif %}
-                {% endwith %}
   
-                <form class="login-form" method="post" action="{{ url_for('login.login') }}" autocomplete="off">
-                  
+                <form action="{{ url_for('login.login') }}"class="login-form" method="post" autocomplete="off">
+                  {{ form_login.csrf_token }}
                   <div class="row">
                     <div class="col-lg-7 mx-auto">
                       <div class="input-material-group mb-3">
-                        {{ render_field(form.cedula_id, placeholder='Cedula',class="form-control") }}
+                        {{ render_field(form_login.cedula_id,max=11,placeholder='Cedula',class="form-control") }}
                       </div>
                       <div class="input-material-group mb-4">
-                        {{ render_field(form.num_carnet_id_pass, placeholder='Numero de carnet',class="form-control")}}
+                        {{ render_field(form_login.num_carnet_id_pass, placeholder='Numero de carnet',class="form-control")}}
                       </div>
                     </div>
                     <div class="col-12 text-center">       
-                      <button class="btn btn-primary mb-3" id="login" type="submit">Login</button>
+                      <button class="btn btn-primary mb-3" id="login" type="submit">Enviar</button>
                       <!-- This should be submit button but I replaced it with <a> for demo purposes-->
                     </div>
                   </div>

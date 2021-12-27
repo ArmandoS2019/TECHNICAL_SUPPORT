@@ -1,15 +1,14 @@
-from flask_login import LoginManager, UserMixin
+from flask_login import UserMixin
 from datetime import datetime
 from flask_sqlalchemy import SQLAlchemy
 from flaskr import db
 # db = SQLAlchemy()
-
 class User_tbl(UserMixin, db.Model):
     __tablename__ = 'User_tbl'
     id = db.Column(db.Integer, primary_key=True)
     my_relation_medicenter = db.relationship('Personalinfo_tbl')
     cedula_id = db.Column(db.String(11), unique=True)
-    num_carnet_id_pass = db.Column(db.String(11), unique=True)
+    num_carnet_id_pass = db.Column(db.String(200), unique=True)
     #---------------------------------------------------------------
     firstname  = db.Column(db.String(50))
     lastname = db.Column(db.String(50))

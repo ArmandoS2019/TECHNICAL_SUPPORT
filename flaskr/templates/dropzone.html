@@ -1,0 +1,15 @@
+
+<html>
+  <head>
+    <title>File Upload</title>
+    {{ dropzone.load_css() }}
+    {{ dropzone.style('border: 2px solid') }}
+  </head>
+  <body>
+    {{ dropzone.create(action='main.main') }}
+    {{ dropzone.load_js() }}
+    {{ dropzone.config() }}
+  </body>
+</html>
+
+
