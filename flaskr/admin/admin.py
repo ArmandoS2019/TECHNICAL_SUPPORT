@@ -31,7 +31,7 @@ def admin():
          birthday=form_personal.birthday.data,
          rank=form_personal.rank.data,
          email_address=form_personal.email.data,
-         celphone=form_personal.celphone2.data,
+         celphone=form_personal.celphone.data,
          direccion_workplace_police=form_personal.direccion_workplace_police.data,
          work_unit=form_personal.work_unit.data,
          nivel_admin='0',

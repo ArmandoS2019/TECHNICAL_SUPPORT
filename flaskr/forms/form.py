@@ -21,13 +21,12 @@ class Login_form(FlaskForm):
 class Personal_info_form(FlaskForm):
     cedula_id = StringField('Cedula', validators=[InputRequired('Cedula')])
     num_carnet_id_pass = StringField('Numero de carnet', validators=[InputRequired('Numero carnet')])
-    
     firstname = StringField('Nombres', validators=[InputRequired('Nombre requerido')])
     lastname = StringField('Apellidos', validators=[InputRequired('Apellido requerido')])
     email = StringField('Email', validators=[DataRequired()])
-    celphone1 = StringField('Telefono', validators=[DataRequired()])
-    celphone2 = StringField('Celular', validators=[DataRequired()])
-
+    cellphone = StringField('Celular', validators=[DataRequired()])
+    birthday = StringField('Fecha de nacimiento', validators=[DataRequired()])
+    
     rank_list = [("",""),('Coronel','Coronel'),('Teniente Coronel','Teniente Coronel'),
                      ('Mayor','Mayor'),('Capitan','Capitan'),('Primer Teniente','Primer Teniente'),
                      ('Segundo Teniente','Segundo Teniente'),('Sargento Mayor','Sargento Mayor'),('Sargento','Sargento'),('Cabo','Cabo'),
@@ -35,25 +34,41 @@ class Personal_info_form(FlaskForm):
     rank = SelectField('Su Rango',choices=rank_list, validators=[InputRequired('Rango requerido')])
 
 
-    department_list = [("",""),('Direccion Regional Central del Distrito',
+    department_list = [("",""),('Inspectoria General, P.N.',
                                 'Direccion Regional Central del Distrito'),
                                ('Direccion Regional Este','Direccion Regional Este')]
     direccion_workplace_police = SelectField(u'Direccion, P.N., a la que perteneces',choices=department_list, validators=[InputRequired('Direcion requerida')])
 
-    work_unit = StringField('Unidad, P.N., a la que pertenece', 
-                                             validators=[DataRequired()])
-    
-    birthday = StringField('Fecha de nacimiento',validators=[DataRequired()])
-    provincia_location = StringField('Provincia', validators=[InputRequired('Provincia')])
-    address_home_location = StringField('Direccion Calle/#', validators=[InputRequired('Direccion del lugar')])
-    
-    status_of_home_list = [("",""),('Propia','Propia'),('Con titulo','Con titulo'),
-                      ('Sin titulo','Sin titulo'),('Con acto de venta','Con acto de venta'),('Otro estatus','Otro estatus')]
-    status_of_home = SelectField(u'Estatus de la casa o terreno',choices=status_of_home_list, validators=[InputRequired('Estatus requerido')])
+    work_unit_list = [("",""),('Estadistica y Monitoreo Inspectoria General, P.N.')]
+    work_unit = SelectField(u'Unidad, P.N., a la que perteneces',choices=department_list, validators=[InputRequired('Direcion requerida')])
    
-    documents_pdf = FileField('')
-    images_home1 = FileField('')
-    images_home2 = FileField('') 
+class Technicalsupport_form(FlaskForm):
+   
+    firstname_lastname = StringField('Nombre de quien solicito el soporte', 
+                                     validators=[InputRequired('Nombre de quien solicito el soporte')])
+
+    direction_support_list = [("",""),('Direccion Regional Central del Distrito',
+                                'Direccion Regional Central del Distrito'),
+                               ('Direccion Regional Este','Direccion Regional Este')]
+    direction_support = SelectField(u'Direccion, P.N., donde realizó el soporte',
+                                choices=direction_support_list, 
+                                validators=[InputRequired('Direcion requerida')])
+
+    work_unit_support = StringField('Unidad, P.N., donde realizó el soporte', 
+                                validators=[DataRequired()])
+    
+    type_of_support_list = [("",""),('Seguridad de usuario','Seguridad de usuario'),
+                               ('Entrenamiento de usuario','Entrenamiento de usuario'),
+                               ('Instalacion de software o hardware','Instalacion de software o hardware'),
+                               ('Configuracion de software','Configuracion de software')]
+    type_of_support = SelectField(u'Tipo de soporte',
+                                choices=type_of_support_list, 
+                                validators=[InputRequired('Campo requerido')])
+    
+    comment_support = StringField('Comentarios del soporte',validators=[DataRequired('Campo requerido')])
+
+    image_support1 = FileField('')
+    image_support2 = FileField('') 
    
 
 

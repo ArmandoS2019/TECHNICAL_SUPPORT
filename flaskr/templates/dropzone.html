@@ -2,13 +2,16 @@
 <html>
   <head>
     <title>File Upload</title>
-    {{ dropzone.load_css() }}
-    {{ dropzone.style('border: 2px solid') }}
   </head>
   <body>
-    {{ dropzone.create(action='main.main') }}
+    {{ dropzone.load_css() }}
+    {{ dropzone.style('border: 2px solid') }}
+    {{ dropzone.create(action=url_for('main.main')) }}
     {{ dropzone.load_js() }}
-    {{ dropzone.config() }}
+    {{ dropzone.config(
+      custom_init='dz = this;document.getElementById("upload-btn").addEventListener("click", function handler(e) {dz.processQueue();});',
+      custom_options='autoProcessQueue: false, addRemoveLinks: true, parallelUploads: 3,') }}
+
   </body>
 </html>
 

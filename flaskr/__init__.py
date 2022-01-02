@@ -2,13 +2,13 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flaskr.config import Config
 from flask_login import LoginManager
-# from flaskr.models.models import db
-from flask_dropzone import Dropzone
+from flask_wtf.csrf import CSRFProtect
+import imghdr
+import os
 #------------------------------
 import pymysql
 pymysql.install_as_MySQLdb()
 #PYMYSQL IS FOR DEVELOPMENT----
-# db = SQLAlchemy()
 
 app = Flask(__name__)
 
@@ -24,9 +24,7 @@ login_manager.needs_refresh_message =(u"Nececita autenticarse nuevamente")
 login_manager.needs_refresh_message_category = "info"
 
 app.config.from_object(Config)
-
-dropzone = Dropzone(app)
-
+csrf = CSRFProtect(app)
 db.init_app(app)
 login_manager.init_app(app)
 

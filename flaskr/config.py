@@ -1,9 +1,5 @@
-import os
-basedir = os.path.abspath(os.path.dirname(__file__))
+
 class Config(object):
-    UPLOADED_PATH = os.path.join(basedir,'main.main')
-    
-    
     
     RECAPTCHA_USE_SSL = False
     RECAPTCHA_PUBLIC_KEY = '6LcBfrUdAAAAANBJCjhns5jsss2x-G9AdK83e29H'
