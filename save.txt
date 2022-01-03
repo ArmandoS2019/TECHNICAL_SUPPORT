@@ -1,0 +1,19 @@
+        
+        <div class="col-md-3 position-relative">
+            {{ render_field(technical_form.work_unit_support,placeholder='Celular',class="form-control",id="inputEmail4") }}
+        </div>
+        <div class="col-md-3 position-relative">
+            {{ render_field(technical_form.phone_support,placeholder='Celular',class="form-control",id="inputEmail4") }}
+        </div>
+        <div class="col-md-3 position-relative">
+            {{ render_field(technical_form.type_of_support,placeholder='Celular',class="form-control",id="inputEmail4") }}
+        </div>
+        <div class="col-md-3 position-relative">
+            {{ render_field(technical_form.comment_support,placeholder='Celular',class="form-control",id="inputEmail4") }}
+        </div>
+        <div class="col-md-3 position-relative">
+            {{ render_field(technical_form.image_support1,class="form-control",id="inputEmail4") }}
+        </div>
+        <div class="col-md-3 position-relative">
+            {{ render_field(technical_form.image_support2,class="form-control",id="inputEmail4") }}
+        </div>

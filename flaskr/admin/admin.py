@@ -25,13 +25,13 @@ def admin():
        
       Personal_info = User_tbl(
          cedula_id=form_personal.cedula_id.data,
-         num_carnet_id_pass=generate_password_hash(form_personal.num_carnet_id_pass.data),
+         password=generate_password_hash(form_personal.password.data),
          firstname=form_personal.firstname.data,
          lastname=form_personal.lastname.data,
          birthday=form_personal.birthday.data,
          rank=form_personal.rank.data,
-         email_address=form_personal.email.data,
-         celphone=form_personal.celphone.data,
+         email_address=form_personal.email_address.data,
+         cellphone=form_personal.cellphone.data,
          direccion_workplace_police=form_personal.direccion_workplace_police.data,
          work_unit=form_personal.work_unit.data,
          nivel_admin='0',

@@ -9,14 +9,14 @@ class User_tbl(UserMixin, db.Model):
     my_relation_personalinf = db.relationship('Technicalsupport_tbl')
     
     cedula_id = db.Column(db.String(11), unique=True)
-    num_carnet_id_pass = db.Column(db.String(200), unique=True)
+    password = db.Column(db.String(200), unique=True)
     #---------------------------------------------------------------
     firstname  = db.Column(db.String(50))
     lastname = db.Column(db.String(50))
     birthday = db.Column(db.DateTime)
     rank = db.Column(db.String(7))
     email_address  = db.Column(db.String(70), unique=True)
-    celphone = db.Column(db.String(10))
+    cellphone = db.Column(db.String(10))
     direccion_workplace_police  = db.Column(db.String(50))
     work_unit  = db.Column(db.String(50))
     nivel_admin  = db.Column(db.String(10))

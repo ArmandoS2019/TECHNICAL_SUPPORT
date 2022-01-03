@@ -12,11 +12,11 @@ class Config(object):
     # SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://armandosuazo:a1234567@armandosuazo.mysql.pythonanywhere-services.com/medical_db"
     # SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://armandosuazo:a1234567@armandosuazo.mysql.pythonanywhere-services.com/inspection_db"
     SQLALCHEMY_DATABASE_URI = 'mysql://root:''@127.0.0.1/technical_supportdb'
+    SQLALCHEMY_TRACK_MODIFICATIONS = True
     # SQLALCHEMY_POOL_SIZE = 30
     # SQLALCHEMY_MAX_OVERFLOW = 20
     # SQLALCHEMY_POOL_TIMEOUT = 300
 
-    # SQLALCHEMY_TRACK_MODIFICATIONS = False
     DEBUG = True  
  
     #********MY PATHS ROUTES ------------****************************

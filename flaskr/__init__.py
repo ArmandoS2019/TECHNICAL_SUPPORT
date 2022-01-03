@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, Markup
 from flask_sqlalchemy import SQLAlchemy
 from flaskr.config import Config
 from flask_login import LoginManager
@@ -16,7 +16,9 @@ db = SQLAlchemy(app)
 login_manager = LoginManager()
 login_manager.session_protection = "strong"
 login_manager.login_view = "login.login"
-login_manager.login_message = "Necesitas iniciar sesión."
+login_manager.login_message = Markup('''Necesitas iniciar sesión. 
+                         <button type="button" class="btn-close"
+                         data-bs-dismiss="alert" aria-label="Close"></button>''')
 login_manager.login_message_category = "danger"
 
 login_manager.refresh_view = "login.login"

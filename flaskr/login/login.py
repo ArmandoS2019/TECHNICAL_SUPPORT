@@ -43,19 +43,22 @@ def login():
     
     if form_login.validate_on_submit(): 
         # print(current_app.url_map)
-        user_cedula_id = User_tbl.query.filter_by(cedula_id=form_login.cedula_id.data).first()
+        email_address = User_tbl.query.filter_by(email_address=form_login.email_address.data).first()
+        print(email_address.email_address)
+        print(email_address)
+        print(email_address)
         # if True:
         #     flash(Markup('Cedula o Numero de carnet incorrecto.  <a type="button" class="close" data-dismiss="alert" aria-label="close">&times;</a>'), "danger")
-        if not user_cedula_id or check_password_hash(user_cedula_id.num_carnet_id_pass,form_login.num_carnet_id_pass.data)==False:
+        if not email_address or check_password_hash(email_address.password,form_login.password.data)==False:
             # if not email or email.password and form.password.data==False:
-            flash(Markup('''Cedula o carnet incorrecto. 
+            flash(Markup('''Email o contraseña incorrecto. 
                          <button type="button" class="btn-close"
                          data-bs-dismiss="alert" aria-label="Close"></button>
                             '''), "danger")
             return redirect(url_for('login.login'))
         else:
             # session.permanent = form.admin_or_user.data
-            login_user(user_cedula_id, remember=True)
+            login_user(email_address, remember=True)
             flash(Markup(f'''Bienvenido {current_user.firstname}.  <button type="button" class="btn-close"
                          data-bs-dismiss="alert" aria-label="Close"></button>'''), "warning")
             return redirect(url_for('main.main'))
