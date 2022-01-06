@@ -1,5 +1,14 @@
 {% extends "index.html" %}
 
+
+
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" />
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
+
+
 {% block content %}
 
 {% with messages = get_flashed_messages(with_categories=true) %}
@@ -64,10 +73,91 @@
       </div>
     </div>
   </div>
-
-
-    
 <hr>
+<div class="card">
+  <div class="card-body">
+      
+<table id="support_datatable" class="table table-striped table-bordered">
+
+  <thead>
+      <tr>
+          <th>Nombres</th>
+          <th>Direccion del soporte</th> 
+          <th>Unidad, P.N.</th> 
+          <th>Telefono</th> 
+          <th>Tipo de soporte</th> 
+          <th>Comentarios</th> 
+          <th>Imagen1</th> 
+          <th>Imagen2</th> 
+      </tr>
+  </thead>
+
+  <tbody>
+        {% for data in tech_query_support %}
+            <tr>
+                <td>{{ data.firstname_lastname }}</td>
+                <td>{{ data.direction_support }}</td>
+                <td>{{ data.work_unit_support }}</td>
+                <td>{{ data.phone_support }}</td>
+                <td>{{ data.type_of_support }}</td>
+                <td>{{ data.comment_support|safe }}</td>
+                <td>{{ data.image_support1 }}</td>
+                <td>{{ data.image_support2 }}</td>
+            </tr>
+        {% endfor %}
+  </tbody>
+
+  <tfoot>
+      <tr>
+        <th>Nombres</th>
+        <th>Direccion del soporte</th> 
+        <th>Unidad, P.N.</th> 
+        <th>Telefono</th> 
+        <th>Tipo de soporte</th> 
+        <th>Comentarios</th> 
+        <th>Imagen1</th> 
+        <th>Imagen2</th> 
+      </tr>
+  </tfoot>
+
+</table>
+  </div>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+<script type = "text/javascript"  src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script type = "text/javascript"  src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+<script type = "text/javascript"  src="https://cdn.datatables.net/plug-ins/1.10.15/dataRender/datetime.js"></script>
+
+
+<script>
+  $('#support_datatable').DataTable({
+      responsive: true,
+      autoWidth: false,
+      "order": [[3, "desc"]],
+      "language": {
+      "lengthMenu": "Mostrar " + 
+      `<select class="custom-select custom-select-sm-5 form-control form-control-sm-5">
+          <option value="10">10</option>
+          <option value="25">25</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
+          <option value="-1">All</option>
+      </select>` + " registros por pagina",
+      "zeroRecords": "No encontrado - lo sentimos",
+      "info": "Mostrando la pagina _PAGE_ de _PAGES_",
+      "infoEmpty": "No hay registros disponibles",
+      "infoFiltered": "(filtrado de _MAX_ registros totales records)",
+      'search': 'Buscar:',
+      'paginate':{
+          'next':'Siguiente',
+          'previous':'Anterior'
+      }
+  }
+  });
+</script>
+
 
 {% endblock %}
 

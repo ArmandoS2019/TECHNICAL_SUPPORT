@@ -20,7 +20,8 @@ main_blueprint = Blueprint('main', __name__)
 @login_required
 def main():
     technical_form = Technicalsupport_form()
-
+    tech_query_support = db.session.query(Technicalsupport_tbl).all()
+    
     if technical_form.validate_on_submit(): 
        
       Support_info = Technicalsupport_tbl(
@@ -32,6 +33,7 @@ def main():
          comment_support=technical_form.comment_support.data,
          image_support1=technical_form.image_support1.data,
          image_support2=technical_form.image_support2.data,
+         my_user_id=current_user.id,
          created_technical_support=datetime.now())
 
       db.session.add(Support_info)
@@ -40,6 +42,8 @@ def main():
                          <button type="button" class="btn-close"
                          data-bs-dismiss="alert" aria-label="Close"></button>
                             '''), "success")
-      return redirect(url_for('main.main'))      
+      return redirect(url_for('main.main')) 
+        
     return render_template('main.html',
-                           technical_form=technical_form)
+                           technical_form=technical_form,
+                           tech_query_support=tech_query_support)
